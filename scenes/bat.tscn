@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/BAT.png" type="Texture" id=1]
+[ext_resource path="res://scripts/bat.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.3435, 17.4964 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fly"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.195406, 0.393848, 0.597583 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[node name="bat" type="RigidBody2D"]
+position = Vector2( 353.338, 290.986 )
+mode = 2
+gravity_scale = 5.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 24.39, 7.56143 )
+shape = SubResource( 1 )
+
+[node name="batanimation" type="AnimationPlayer" parent="."]
+autoplay = "fly"
+anims/fly = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1

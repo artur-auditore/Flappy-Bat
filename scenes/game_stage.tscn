@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sprites/background_night.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/ground.png" type="Texture" id=2]
 [ext_resource path="res://scenes/bat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tree.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "groud"
@@ -34,7 +35,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 97.2538, 10 )
+extents = Vector2( 84.9124, 10 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( -52.817, -86.455 )
+b = Vector2( 114.791, -86.1277 )
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -67,6 +72,13 @@ position = Vector2( 249.859, 514.062 )
 scale = Vector2( 6.11669, 2.69576 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 54.6156, 1.81012 )
-scale = Vector2( 1, 1 )
+position = Vector2( 44.3159, -0.415571 )
 shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 11.7711, -103.867 )
+shape = SubResource( 3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 563.859, 238.062 )
+scale = Vector2( 6.11669, 2.69576 )

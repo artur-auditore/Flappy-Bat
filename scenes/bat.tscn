@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/bat.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.3435, 17.4964 )
+extents = Vector2( 25.272, 22.5109 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "fly"
@@ -25,6 +25,7 @@ tracks/0/keys = {
 
 [node name="bat" type="RigidBody2D"]
 position = Vector2( 353.338, 290.986 )
+collision_mask = 0
 mode = 2
 gravity_scale = 5.0
 script = ExtResource( 2 )
@@ -40,4 +41,3 @@ anims/fly = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 3
-frame = 1

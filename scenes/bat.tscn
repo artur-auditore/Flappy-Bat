@@ -26,7 +26,6 @@ tracks/0/keys = {
 [node name="bat" type="RigidBody2D"]
 position = Vector2( 353.338, 290.986 )
 collision_mask = 0
-mode = 2
 gravity_scale = 5.0
 script = ExtResource( 2 )
 
@@ -41,3 +40,4 @@ anims/fly = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 3
+[connection signal="body_entered" from="." to="." method="_on_bat_body_entered"]

@@ -1,16 +1,13 @@
 extends Node2D
-
-export var vel = -200
 var cena
-
 func _ready() -> void:
 	cena = get_tree().get_current_scene()
 	set_process(true)
 
 func _process(delta: float) -> void:
 	if cena.estado == cena.JOGANDO:
-		position = position + Vector2(vel * delta, 0)
-		
+		position = position + Vector2(global.vel * delta, 0)
+	
 	if position.x < -650:
 		queue_free()
 

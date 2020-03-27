@@ -19,10 +19,9 @@ func Pontua() -> void:
 	$Score.text = str(score)
 
 func kill():
-	bat.apply_impulse(Vector2(0,0),Vector2(0,500))
+	$bat.queue_free()
 	$Trees/Gerador/Timer.stop()
 	$bat/batanimation.stop()
 	estado = PERDENDO
 	show_message("Game Over")
 	
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/tree.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Tree_Big_1.png" type="Texture" id=2]
@@ -8,6 +8,10 @@ extents = Vector2( 10, 58.4699 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 58.0881 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 1.50307, -23.611 )
+b = Vector2( 1.70307, 11.189 )
 
 [node name="Tree" type="Node2D"]
 position = Vector2( 3.02792e-05, 4.00006 )
@@ -25,13 +29,23 @@ scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 2 )
 flip_v = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AreaTree" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTree"]
 position = Vector2( 0.5, -69.3333 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaTree"]
 position = Vector2( 1, 69.5 )
 shape = SubResource( 2 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[node name="Barreira" type="Area2D" parent="."]
+position = Vector2( 24.2, 6.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barreira"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="AreaTree" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Barreira" to="." method="_on_Barreira_body_entered"]

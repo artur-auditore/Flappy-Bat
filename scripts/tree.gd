@@ -10,9 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if cena.estado == cena.JOGANDO:
 		position = position + Vector2(vel * delta, 0)
-	
+		
 	if position.x < -650:
-		cena.Pontua()
 		queue_free()
 
 func position_tree(pos) -> void:
@@ -22,3 +21,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if body.name == "bat":
 		cena.kill()
 
+func _on_Barreira_body_entered(body: Node) -> void:
+	if body.name == "bat":
+		cena.Pontua()

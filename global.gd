@@ -1,5 +1,5 @@
 extends Node
 
 var score
-var vel = -200
+var vel = 0
 

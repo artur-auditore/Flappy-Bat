@@ -9,6 +9,7 @@ const PERDENDO = 2
 
 func _ready() -> void:
 	global.score = 0
+	global.vel = -200
 	randomize() 
 
 func show_message(text):

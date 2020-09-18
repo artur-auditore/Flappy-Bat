@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_night.png-e628b8df5acbffa5917cb3a41ebb343f.stex"
+path="res://.import/estalacx.png-61afdfff1eabd93c47e2f1cbdd8bb8c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/background_night.png"
-dest_files=[ "res://.import/background_night.png-e628b8df5acbffa5917cb3a41ebb343f.stex" ]
+source_file="res://estalacx.png"
+dest_files=[ "res://.import/estalacx.png-61afdfff1eabd93c47e2f1cbdd8bb8c5.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

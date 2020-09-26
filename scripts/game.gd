@@ -27,7 +27,7 @@ func kill():
 	$Trees/Gerador/Timer.stop()
 	$bat/batanimation.stop()
 	global.estado_arvore = global.PERDENDO
-	show_message("Game Over")
+	$cntr_gameover.show()
 
 func choose_stage():
 	global.stage_number = random.randi_range(0,1)
@@ -40,4 +40,5 @@ func choose_stage():
 		#global.estado_arvore = global.PERDENDO
 		#$Trees.visible = false
 		$world.set_texture(back_cave)
+		
 		

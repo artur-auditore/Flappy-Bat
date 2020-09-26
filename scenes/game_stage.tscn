@@ -1,12 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://fonts/FlappyBirdy.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/btn_play.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/panel_score.png" type="Texture" id=2]
 [ext_resource path="res://scenes/bat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/button_play_normal.png" type="Texture" id=4]
 [ext_resource path="res://scripts/gerador.gd" type="Script" id=5]
 [ext_resource path="res://scripts/game.gd" type="Script" id=6]
-[ext_resource path="res://scripts/MenuButton.gd" type="Script" id=7]
+[ext_resource path="res://assets/sprites/button_score_pressed.png" type="Texture" id=7]
 [ext_resource path="res://fonts/flappy-bird-regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/sprites/button_play_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/label_game_over.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/button_score_normal.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 84.9124, 10 )
@@ -15,7 +19,7 @@ extents = Vector2( 84.9124, 10 )
 a = Vector2( -52.817, -86.455 )
 b = Vector2( 114.791, -86.1277 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 90
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
@@ -23,14 +27,6 @@ font_data = ExtResource( 8 )
 [sub_resource type="DynamicFont" id=4]
 size = 90
 outline_size = 1
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 90
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 30
 font_data = ExtResource( 8 )
 
 [node name="Game" type="Node2D"]
@@ -78,7 +74,7 @@ one_shot = true
 margin_left = 492.0
 margin_right = 548.0
 margin_bottom = 195.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -103,45 +99,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TryAgainBtn" type="Button" parent="."]
+[node name="cntr_gameover" type="Container" parent="."]
 visible = false
-margin_left = 458.0
-margin_top = 404.0
-margin_right = 522.0
-margin_bottom = 441.0
-rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 7 )
-icon = ExtResource( 4 )
-script = ExtResource( 7 )
+margin_right = 1026.0
+margin_bottom = 492.0
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="TryAgain" type="Label" parent="TryAgainBtn"]
-margin_left = -55.0
-margin_top = -47.0
-margin_right = 130.0
+[node name="text_gameover" type="TextureRect" parent="cntr_gameover"]
+margin_left = 390.0
+margin_top = 100.0
+margin_right = 486.0
+margin_bottom = 140.0
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 10 )
+
+[node name="panel_score" type="TextureRect" parent="cntr_gameover"]
+margin_left = 370.0
+margin_top = 200.0
+margin_right = 483.0
+margin_bottom = 257.0
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 2 )
+
+[node name="hbox_buttons" type="HBoxContainer" parent="cntr_gameover"]
+margin_left = 370.0
+margin_top = 370.0
+margin_right = 483.0
+margin_bottom = 400.0
+rect_scale = Vector2( 2.5, 2.5 )
+custom_constants/separation = 9
+alignment = 1
+
+[node name="btn_play" type="TextureButton" parent="cntr_gameover/hbox_buttons"]
+margin_right = 52.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Try Again
-"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 9 )
+script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="tree_exited" from="bat" to="TryAgainBtn" method="_on_bat_tree_exited"]
+[node name="btn_scores" type="TextureButton" parent="cntr_gameover/hbox_buttons"]
+margin_left = 61.0
+margin_right = 113.0
+margin_bottom = 30.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 7 )
 [connection signal="timeout" from="Trees/Gerador/Timer" to="Trees/Gerador" method="_on_Timer_timeout"]
-[connection signal="pressed" from="TryAgainBtn" to="TryAgainBtn" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="cntr_gameover/hbox_buttons/btn_play" to="cntr_gameover/hbox_buttons/btn_play" method="_on_btn_play_pressed"]

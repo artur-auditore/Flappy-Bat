@@ -4,6 +4,7 @@ onready var random = RandomNumberGenerator.new()
 onready var back_day =  preload("res://background_day.png")
 onready var back_cave = preload("res://background_cav.png")
 
+signal recorde
 
 func _ready() -> void:
 	random.randomize()
@@ -22,12 +23,17 @@ func Pontua() -> void:
 	global.score += 1
 	$Score.text = str(global.score)
 
+		
 func kill():
 	$bat.queue_free()
 	$Trees/Gerador/Timer.stop()
 	$bat/batanimation.stop()
 	global.estado_arvore = global.PERDENDO
 	$cntr_gameover.show()
+	$cntr_gameover/panel_score/score_final.text = str(global.score)
+	if global.score > global.best_score:
+		global.best_score = global.score
+	$cntr_gameover/panel_score/best_score.text = str(global.best_score)
 
 func choose_stage():
 	global.stage_number = random.randi_range(0,1)

@@ -1,0 +1,4 @@
+- Adicionado uma fase nova
+- Fase escolhida aleatoriamente
+- Adicionado painel de pontuação
+- Fontes "combinando" com o cenário

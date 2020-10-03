@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/btn_play.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/panel_score.png" type="Texture" id=2]
@@ -37,6 +37,11 @@ font_data = ExtResource( 8 )
 size = 20
 font_data = ExtResource( 8 )
 
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1022.22, 6.85983, 0, 0, 0, 0, 1022.22, 480.86 )
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 6 )
 __meta__ = {
@@ -55,11 +60,11 @@ mode = 2
 position = Vector2( 520, -18 )
 
 [node name="Gerador" type="Position2D" parent="Trees"]
-position = Vector2( 546, 288 )
+position = Vector2( 525, 254 )
 script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="Trees/Gerador"]
-wait_time = 2.0
+wait_time = 2.5
 autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -94,10 +99,10 @@ __meta__ = {
 }
 
 [node name="Message" type="Label" parent="."]
-margin_left = 369.001
-margin_top = 112.631
-margin_right = 699.001
-margin_bottom = 283.631
+margin_left = 509.001
+margin_top = 260.631
+margin_right = 839.001
+margin_bottom = 431.631
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -178,5 +183,17 @@ margin_right = 113.0
 margin_bottom = 30.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 7 )
+
+[node name="OwlTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="OwlPath" type="Path2D" parent="."]
+z_index = 1
+curve = SubResource( 7 )
+
+[node name="OwlSpawnLocation" type="PathFollow2D" parent="OwlPath"]
+position = Vector2( 1022.22, 6.85983 )
+rotation = 1.57077
 [connection signal="timeout" from="Trees/Gerador/Timer" to="Trees/Gerador" method="_on_Timer_timeout"]
 [connection signal="pressed" from="cntr_gameover/hbox_buttons/btn_play" to="cntr_gameover/hbox_buttons/btn_play" method="_on_btn_play_pressed"]
+[connection signal="timeout" from="OwlTimer" to="." method="_on_OwlTimer_timeout"]

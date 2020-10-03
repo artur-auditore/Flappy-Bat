@@ -1,9 +1,8 @@
 extends Node2D
-onready var bat = get_node("bat")
 onready var random = RandomNumberGenerator.new()
 onready var back_day =  preload("res://background_day.png")
 onready var back_cave = preload("res://background_cav.png")
-
+onready var owl = preload("res://scenes/owl.tscn")
 signal recorde
 
 func _ready() -> void:
@@ -12,8 +11,8 @@ func _ready() -> void:
 	print(global.stage_number)
 	global.estado_arvore = global.JOGANDO
 	global.score = 0
+	$OwlTimer.start()
 	global.vel = -200
-	
 
 func show_message(text):
 	$Message.text = text
@@ -42,9 +41,15 @@ func choose_stage():
 		$world.set_texture(back_day)
 		$world.scale.x = 7.0
 		$world.scale.y = 2.34
-	elif global.stage_number == 1:
-		#global.estado_arvore = global.PERDENDO
+	elif global.stage_number == 1:		#global.estado_arvore = global.PERDENDO
 		#$Trees.visible = false
 		$world.set_texture(back_cave)
 		
-		
+
+func _on_OwlTimer_timeout() -> void:
+	$OwlPath/OwlSpawnLocation.set_offset(randi())
+	var newowl = owl.instance()
+	add_child(newowl)
+	newowl.position = $OwlPath/OwlSpawnLocation.position
+
+	

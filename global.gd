@@ -8,3 +8,7 @@ var estado_pedra
 const JOGANDO = 1
 const PERDENDO = 2
 var stage_number
+var owl_pos
+
+func register_owl(owl):
+	owl_pos = owl

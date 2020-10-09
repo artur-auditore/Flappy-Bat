@@ -1,6 +1,6 @@
 extends Node2D
 onready var trees =  preload("res://Tree_Big_1.png")
-onready var estaca = preload("res://estalacx.png")
+onready var pine = preload("res://pine_tree.png")
 var cena
 
 
@@ -32,22 +32,18 @@ func get_blocker():
 	if global.stage_number == 0:
 		$Sprite.set_texture(trees)
 		$Sprite2.set_texture(trees)
-		$Sprite.position.y = 75
-		$Sprite2.position.y = -75
+		$Sprite.position.y = 72
+		$Sprite2.position.y = -72
 		$Sprite.scale.x = 0.05
 		$Sprite.scale.y = 0.05
 		$Sprite2.scale.x = 0.05
 		$Sprite2.scale.y = 0.05
-		$AreaTree/block_tree.position.x = 0.56
-		$AreaTree/block_tree.position.y = -73.2
-		$AreaTree/block_tree2.position.x = 0.89
-		$AreaTree/block_tree2.position.x = 72.53
 	elif global.stage_number == 1:
-		$Sprite.set_texture(estaca)
-		$Sprite2.set_texture(estaca)
-		$Sprite.position.y = 65.8
-		$Sprite2.position.y = -66.4
-		$Sprite.scale.x = 0.24
-		$Sprite.scale.y = 0.68
-		$Sprite2.scale.x = 0.24
-		$Sprite2.scale.y = 0.68
+		$Sprite.set_texture(pine)
+		$Sprite2.set_texture(pine)
+		$Sprite.position.y = 67
+		$Sprite2.position.y = -67
+		$Sprite.scale.x = 0.05
+		$Sprite.scale.y = 0.05
+		$Sprite2.scale.x = 0.05
+		$Sprite2.scale.y = 0.05

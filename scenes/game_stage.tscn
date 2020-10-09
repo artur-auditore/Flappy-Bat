@@ -49,8 +49,8 @@ __meta__ = {
 }
 
 [node name="world" type="Sprite" parent="."]
-position = Vector2( 511.794, 300.569 )
-scale = Vector2( 7.05556, 2.34375 )
+position = Vector2( 513.794, 300.569 )
+scale = Vector2( 0.360351, 0.335536 )
 
 [node name="bat" parent="." instance=ExtResource( 3 )]
 position = Vector2( 175.316, 324.135 )
@@ -185,7 +185,7 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 7 )
 
 [node name="OwlTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="OwlPath" type="Path2D" parent="."]
 z_index = 1

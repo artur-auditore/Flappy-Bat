@@ -1,7 +1,7 @@
 extends Node2D
 onready var random = RandomNumberGenerator.new()
 onready var back_day =  preload("res://background_day.png")
-onready var back_cave = preload("res://background_cav.png")
+onready var back_nat_noite = preload("res://natureza_noite.jpg")
 onready var owl = preload("res://scenes/owl.tscn")
 signal recorde
 
@@ -25,6 +25,7 @@ func Pontua() -> void:
 		
 func kill():
 	$bat.queue_free()
+	$OwlTimer.stop()
 	$Trees/Gerador/Timer.stop()
 	$bat/batanimation.stop()
 	global.estado_arvore = global.PERDENDO
@@ -43,7 +44,9 @@ func choose_stage():
 		$world.scale.y = 2.34
 	elif global.stage_number == 1:		#global.estado_arvore = global.PERDENDO
 		#$Trees.visible = false
-		$world.set_texture(back_cave)
+		$world.set_texture(back_nat_noite)
+		$world.scale.x = 0.47
+		$world.scale.y = 0.42
 		
 
 func _on_OwlTimer_timeout() -> void:

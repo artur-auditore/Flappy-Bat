@@ -185,7 +185,7 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 7 )
 
 [node name="OwlTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="OwlPath" type="Path2D" parent="."]
 z_index = 1

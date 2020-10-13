@@ -11,7 +11,6 @@ func _ready() -> void:
 	print(global.stage_number)
 	global.estado_arvore = global.JOGANDO
 	global.score = 0
-	$OwlTimer.start()
 	global.vel = -200
 
 func show_message(text):
@@ -47,7 +46,7 @@ func choose_stage():
 		$world.set_texture(back_nat_noite)
 		$world.scale.x = 0.47
 		$world.scale.y = 0.42
-		
+		$OwlTimer.start()
 
 func _on_OwlTimer_timeout() -> void:
 	$OwlPath/OwlSpawnLocation.set_offset(randi())

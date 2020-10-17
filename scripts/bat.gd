@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var velocity 
-var bird_jump_angle : = -3
+var bird_jump_angle : = -0.5
 var bird_fall_angle : = 0.5
 var bird_jump_speed : = -150 # bird's jump speed
 
@@ -12,8 +12,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta) -> void:
-	if  get_rotation_degrees() < -50: # if the bird's angle is less than -40
-		set_rotation_degrees(-50) # set it to -40
+	if  get_rotation_degrees() < -40: # if the bird's angle is less than -40
+		set_rotation_degrees(-40) # set it to -40
 		set_angular_velocity(0) # reset bird_jump_angle to pervent angle bugs
 	if get_linear_velocity().y > 0: # if the bird was falling
 		set_angular_velocity(bird_fall_angle) # face down the bird
